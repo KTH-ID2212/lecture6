@@ -1,0 +1,14 @@
+module bankidl {
+    interface Account {
+	readonly attribute float balance;
+	exception rejected { string reason; };
+	void deposit(in float value) raises( rejected);
+	void withdraw(in float value) raises( rejected);
+    };
+    interface Bank {
+	exception rejected { string reason; };
+	Account newAccount( in string name) raises( rejected);
+	Account getAccount ( in string name);
+	boolean deleteAccount( in string acc );
+    };
+};
